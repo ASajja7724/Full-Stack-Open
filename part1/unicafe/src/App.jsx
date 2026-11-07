@@ -28,7 +28,13 @@ const App = () => {
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
 
+  function calcAvg() {
+    return (good*1+bad*-1)/(good+neutral+bad)
+  }
 
+  function calcPos() {
+    return (good)/(good+neutral+bad) * 100
+  }
   
   return (
     <div>
@@ -41,6 +47,11 @@ const App = () => {
         <Display name="good" value={good}/>
         <Display name="neutral" value={neutral}/>
         <Display name="bad" value={bad}/>
+        <Display name="all" value={good+neutral+bad}/>
+        
+        <Display name="average" value={calcAvg()}/>
+        <Display name="average" value={`${calcPos()} %`}/>
+
 
     </div>
   )
